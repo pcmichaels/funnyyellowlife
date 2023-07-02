@@ -3,6 +3,9 @@
   "private": false,
   "description": "A simple starter to get up and developing quickly with Gatsby 5 and Bootstrap 5",
   "version": "2.0.2",
+  "engines": {
+    "node": "18.x"
+  },
   "author": "Richard Raduly <richard@raduly.fr>",
   "dependencies": {
     "@popperjs/core": "^2.11.6",
