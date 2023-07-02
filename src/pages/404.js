@@ -1,3 +1,4 @@
+/*
 import * as React from "react"
 
 import Layout from "../components/layout"
@@ -17,3 +18,4 @@ export default NotFoundPage
 export const Head = () => (
     <Seo title="404: Not found" />
 )
+*/
