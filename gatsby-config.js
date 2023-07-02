@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Funny Yellow Life`,
     description: `Jokes, comics`,
-    author: `@r-ichard`,
+    author: `Paul Michaels`,
   },
   plugins: [
     `gatsby-plugin-image`,
