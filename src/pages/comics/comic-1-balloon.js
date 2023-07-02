@@ -11,7 +11,7 @@ const comicBalloon = () => (
       <h1>Balloon</h1>
       
       <StaticImage
-            src="../images/comic-1-balloon/comic-hot-air-1.png"
+            src="../../images/comic-1-balloon/comic-hot-air-1.png"
             width={500}
             quality={80}
             formats={["AUTO", "WEBP"]}
@@ -20,7 +20,7 @@ const comicBalloon = () => (
           />
 
       <StaticImage
-            src="../images/comic-1-balloon/comic-hot-air-2.png"
+            src="../../images/comic-1-balloon/comic-hot-air-2.png"
             width={500}
             quality={80}
             formats={["AUTO", "WEBP"]}
@@ -29,7 +29,7 @@ const comicBalloon = () => (
           />
 
       <StaticImage
-            src="../images/comic-1-balloon/comic-hot-air-3.png"
+            src="../../images/comic-1-balloon/comic-hot-air-3.png"
             width={500}
             quality={80}
             formats={["AUTO", "WEBP"]}
@@ -38,7 +38,7 @@ const comicBalloon = () => (
           />
 
       <StaticImage
-            src="../images/comic-1-balloon/comic-hot-air-4.png"
+            src="../../images/comic-1-balloon/comic-hot-air-4.png"
             width={500}
             quality={80}
             formats={["AUTO", "WEBP"]}
