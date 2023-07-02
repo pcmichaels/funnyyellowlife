@@ -25,7 +25,7 @@ const IndexPage = () => (
       </div>
       <div className="row">
         <Link to="/about/" className="btn btn-primary my-2">About</Link>
-        <Link to="/balloon/" className="btn btn-secondary my-2">Balloon</Link>
+        <Link to="/comics/comic-1-balloon/" className="btn btn-secondary my-2">Balloon</Link>
       </div>
     </section>
   </Layout>
