@@ -1,38 +1,94 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { Link, graphql } from "gatsby"
 
+import Bio from "../components/bio"
 import Layout from "../components/layout"
-import { Seo } from "../components/seo"
+import Seo from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <section className="py-5 text-center container">
-      <div className="row py-lg-5">
-        <div className="col-lg-6 col-md-8 mx-auto">
-          <h1 className="fw-light">Funny Yellow Life</h1>
-          <p className="lead text-muted">The Home of Little Comics and Jokes</p>
-          <StaticImage
-            src="../images/FunnyYellowLife.png"
-            width={300}
-            quality={95}
-            formats={["AUTO", "WEBP"]}
-            alt="A Gatsby astronaut"
-            className="img-fluid"
-          />
+const BlogIndex = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const posts = data.allMarkdownRemark.nodes
 
-        </div>
-      </div>
-      <div className="row">
-        <Link to="/about/" className="btn btn-primary my-2">About</Link>
-        <Link to="/comics/comic-1-balloon/" className="btn btn-secondary my-2">Balloon</Link>
-      </div>
-    </section>
-  </Layout>
-)
+  if (posts.length === 0) {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <Bio />
+        <p>
+          No blog posts found. Add markdown posts to "content/blog" (or the
+          directory you specified for the "gatsby-source-filesystem" plugin in
+          gatsby-config.js).
+        </p>
+      </Layout>
+    )
+  }
 
-export default IndexPage
+  return (
+    <Layout location={location} title={siteTitle}>
+      <Bio />
+      <ol style={{ listStyle: `none` }}>
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
 
-export const Head = () => (
-    <Seo />
-)
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <header>
+                  <h2>
+                    <Link to={post.fields.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+                  <small>{post.frontmatter.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </ol>
+    </Layout>
+  )
+}
+
+export default BlogIndex
+
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+export const Head = () => <Seo title="All posts" />
+
+export const pageQuery = graphql`
+  {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
+      }
+    }
+  }
+`
