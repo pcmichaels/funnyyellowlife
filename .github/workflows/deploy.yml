@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: '18' # Specify the desired Node.js version here          
+          node-version: '>=18' # Specify the desired Node.js version here          
 
       - name: npm install
         run: npm install
