@@ -50,11 +50,6 @@ jobs:
 
       - name: Build Gatsby project
         run: npm run build
-
-      - name: Debug
-        run: |
-          ls -lrt
-          ls -lrt ${{ env.APP_ARTIFACT_LOCATION }}
         
       - name: Build And Deploy
         id: builddeploy
